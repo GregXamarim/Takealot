@@ -1,0 +1,67 @@
+<app-address></app-address>
+<div class="checkOutList">
+
+   
+<!--Radio group-->
+<div class="alert alert-success">
+    <strong>Payment</strong> 
+  </div>
+<form class="form-inline" #addPayment="ngForm" (ngSubmit)="onSubmit(addPayment)">
+  <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)] ="paymentService.selectedPayment.PaymentID" >
+  <input type="hidden" name="custID" #custID="ngModel" [(ngModel)] ="paymentService.selectedPayment.custID">
+
+    <div class="form-check col-sm-2 mb-lg-2">
+        <input class="form-check-input" type="radio" id="radio120" name="PaymentType" [(ngModel)]="payInfo.eft"   [value] ="payInfo.eft">
+        <img src="https://static.takealot.com/images/pay-opt-eftall.png">
+        <label class="form-check-label" for="radio120">EFT</label>
+    </div>
+
+    <div class="form-check col-sm-2 mb-lg-2">
+        <input class="form-check-input" name="PaymentType" type="radio" id="radio121" [(ngModel)]="payInfo.credit" [value] ="payInfo.credit">
+        <img src="https://static.takealot.com/images/pay-opt-cc.gif">
+        <label class="form-check-label" for="radio121">Credit & Debit</label>
+    </div>
+
+
+<!--Radio group-->
+
+
+    <h2> <strong>Order Summary</strong> </h2>
+  <div  class="col-md-8">
+  <table class="table">
+    <thead>
+    <tr>
+        <th>Item Description</th>
+        <th>Cart Quantity</th>
+        <th>Unit Price</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cart of cartDetails">
+        <td>{{cart.ProdName}}</td>
+        <td> {{cart.CartQuantity}}</td>
+        <td>R {{cart.Price}}</td>
+              
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
+  
+  
+  <div class="card-body ">             
+    <td><strong>Total R {{totalP}}</strong></td>
+    <td>
+      <div class="col">
+        <td><button class="btn btn-success">Proceed</button></td>
+    </div>
+    </td>   
+   
+  </div>
+</form>
+  
+
+</div>
+
+              

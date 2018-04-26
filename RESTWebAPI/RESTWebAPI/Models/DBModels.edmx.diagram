@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f29e3d010bee40e88ab2ce3534ca233f" Name="Diagram1">
+        <EntityTypeShape EntityType="takealotDBModel.customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="takealotDBModel.Admin" Width="1.5" PointX="3.25" PointY="0.5" />
+        <EntityTypeShape EntityType="takealotDBModel.Driver" Width="1.5" PointX="6.75" PointY="3" />
+        <EntityTypeShape EntityType="takealotDBModel.Product" Width="1.5" PointX="3.75" PointY="3" />
+        <EntityTypeShape EntityType="takealotDBModel.Supplier" Width="1.5" PointX="6.875" PointY="0.625" />
+        <EntityTypeShape EntityType="takealotDBModel.Cart" Width="1.5" PointX="9" PointY="4" />
+        <AssociationConnector Association="takealotDBModel.FK_Cart_customer" />
+        <AssociationConnector Association="takealotDBModel.FK_Cart_Product" />
+        <EntityTypeShape EntityType="takealotDBModel.Address" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="takealotDBModel.FK_Address_customer" />
+        <EntityTypeShape EntityType="takealotDBModel.Payment" Width="1.5" PointX="3" PointY="11.375" />
+        <AssociationConnector Association="takealotDBModel.FK_Payment_customer" />
+        <EntityTypeShape EntityType="takealotDBModel.EFT" Width="1.5" PointX="5.625" PointY="9.75" />
+        <AssociationConnector Association="takealotDBModel.FK_EFT_Payment" />
+        <EntityTypeShape EntityType="takealotDBModel.Credit" Width="1.5" PointX="5.5" PointY="12.75" />
+        <AssociationConnector Association="takealotDBModel.FK_Credit_Payment" />
+        <EntityTypeShape EntityType="takealotDBModel.Order" Width="1.5" PointX="3" PointY="14.375" />
+        <EntityTypeShape EntityType="takealotDBModel.OrderItem" Width="1.5" PointX="6" PointY="6.375" />
+        <AssociationConnector Association="takealotDBModel.FK_Order_customer" />
+        <AssociationConnector Association="takealotDBModel.FK_OrderItem_customer" />
+        <AssociationConnector Association="takealotDBModel.FK_OrderItem_Order" />
+        <AssociationConnector Association="takealotDBModel.FK_OrderItem_Product" />
+        <EntityTypeShape EntityType="takealotDBModel.Schedule" Width="1.5" PointX="9.125" PointY="7.5" />
+        <AssociationConnector Association="takealotDBModel.FK_Schedule_Supplier" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

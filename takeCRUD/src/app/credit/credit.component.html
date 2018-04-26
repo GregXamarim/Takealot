@@ -1,0 +1,41 @@
+<app-login-nav></app-login-nav>
+
+<div class="AdminList">
+    <div>
+        <h2 class=" bg-white text-black"><strong>Credit Payment</strong></h2>
+      </div>
+       <!--Start Form -->
+  <form class="addEFT-form" #addCredit="ngForm" (ngSubmit)="onSubmit(addCredit)">
+      <input type="hidden" name="CardID" #CardID="ngModel" [(ngModel)] ="creditService.selectedCredit.CardID" >
+      <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)] ="creditService.selectedCredit.PaymentID">
+      
+    <div class="form-group">
+    
+      <div class="form-group col-md-6">
+         <label>Card Description*</label>
+        <input class="form-control" name="CardDescription" #CardDescription="ngModel"[(ngModel)]="creditService.selectedCredit.CardDescription " placeholder="Card Description" required>
+        <div class="validation-error" *ngIf="CardDescription.invalid && CardDescription.touched">This Field Is Required</div>
+      </div>
+    
+    
+     </div>
+    <div class="form-group col-md-6">
+       <label>Name On Card*</label>
+       <input  class="form-control" name="NameOnCard" #NameOnCard="ngModel"[(ngModel)]="creditService.selectedCredit.NameOnCard" placeholder="Name On Card" required>
+       <div class="validation-error" *ngIf="NameOnCard.invalid && NameOnCard.touched">This Field Is Required</div>
+    
+       <label>Expiry Date*</label>
+       <input class="form-control" name="ExpDate" type="date"  #ExpDate="ngModel"[(ngModel)]="creditService.selectedCredit.ExpDate" placeholder="Expiry Date" required> 
+       <div class="validation-error" *ngIf="ExpDate.invalid && ExpDate.touched">This Field Is Required</div>
+     
+        
+    </div>
+      
+        <button [disabled] = "!addCredit.valid" type="submit" class="btn btn-success">Secure Payment</button>
+        <img src="https://static.takealot.com/images/pay-opt-eftall.png">
+        <button  class="btn btn-success" routerLink="/order">Procced</button>
+    <!--End Form -->
+  </form>
+</div>
+  
+ 

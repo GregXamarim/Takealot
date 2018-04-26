@@ -1,0 +1,85 @@
+<header >
+  <div class="logo">
+    <a>
+      <img src="assets/img/logo.png">
+    </a>
+  </div>
+
+<div class="navList">
+    
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" *ngIf="supplierClaims"><strong>Hi {{supplierClaims.SupplierName}}</strong></a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link btn" (click)="Logout()"><strong><i class="fas fa-sign-out-alt"></i> Logout</strong></a>
+          </li>
+
+          <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <strong> Manage Accounts</strong>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"  routerLink="/schedule">Schedule</a>
+          </div>
+        </li> 
+        </ul>
+     
+      </div>
+    
+    </nav>
+  </div>
+</header>
+
+<div class="AdminList">
+ 
+
+    <div>
+      <h2 class=" bg-white text-black"><strong>Schedule Inventory</strong></h2>
+    </div>
+
+<form class="addSchedule-form" #addSchedule="ngForm" (ngSubmit)="onSubmit(addSchedule)">
+  <input type="hidden" name="ScheduleID" #ScheduleID ngModel >
+  <input type="hidden" name="SupplierID" #SupplierID ngModel >
+
+
+<div class="form-group">
+
+  <div class="form-group col-md-5">
+     <label>Supplier Name:</label>
+    <input class="form-control" name="SupplierName" #SupplierName ngModel placeholder="Supplier Name" required>
+    <div class="validation-error" *ngIf="SupplierName.invalid && SupplierName.touched">This Field Is Required</div>
+  </div>
+
+
+ </div>
+<div class="form-group col-md-5">
+   <label>ProdName:</label>
+   <input class="form-control" name="ProdName" #ProdName ngModel placeholder="Product Name" required>
+   <div class="validation-error" *ngIf="ProdName.invalid && ProdName.touched">This Field Is Required</div>
+
+   <label>Supplier Date:</label>
+   <input  class="form-control" type="date" name="SupplierDate" #SupplierDate ngModel placeholder="Supplier Date" required> 
+   <div class="validation-error" *ngIf="SupplierDate.invalid && SupplierDate.touched">This Field Is Required </div>
+
+   <label>Product Quantity:</label>
+   <input  class="form-control" name="ProdQuantity" #ProdQuantity ngModel placeholder="Product Quantity" required> 
+   <div class="validation-error" *ngIf="ProdQuantity.invalid && ProdQuantity.touched">This Field Is Required </div>
+
+
+</div>
+<div class="form-group col-md-5">
+    <button [disabled] = "!addSchedule.valid" type="submit" class="btn btn-lg btn-block btn-info"><i class="fas fa-save"></i> Add Schedule</button>
+    </div>
+</form>  
+</div>
+

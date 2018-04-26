@@ -1,0 +1,131 @@
+<header >
+  <div class="logo">
+    <a>
+      <img src="assets/img/logo.png">
+    </a>
+  </div>
+
+<div class="navList">
+    
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" *ngIf="DriverClaims"><strong>Hi {{DriverClaims.FirstName}}</strong></a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link btn" (click)="Logout()"><strong><i class="fas fa-sign-out-alt"></i> Logout</strong></a>
+          </li>
+       
+        </ul>
+     
+      </div>
+    
+    </nav>
+  </div>
+</header>
+
+
+
+<table class="table table-sm-hover">
+  
+
+  </table>
+  <tr *ngFor="let order of orderI">
+  
+  <div class="row">
+     
+    <div class="col-md-3 .ml-md-auto">
+        <div class="card" style="width: 25rem;">
+            <div class="card-body  bg-secondary">
+              <div class="col">
+                <td><strong>Order Number: {{order.OrderID}} </strong></td>
+            </div>
+                <td>Order Date: {{order.OrderDate}}</td>
+                <td *ngIf="!Status(order)">Delivery Date: {{order.DeliveryDate}}</td>
+                <td *ngIf="Status(order)" >Delivery Status  {{order.Status}}</td>
+       
+                
+                
+               
+                <td>
+                   
+              <!-- Button trigger modal -->
+              <button type="button" type="submit" (click)="onSubmit(order)" class="btn btn-white" data-toggle="modal"   data-target="#exampleModalCenter">
+                  <i class="fas fa-plus"></i>View Order
+              </button>
+             
+              
+              <!-- Modal -->
+              <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Order Details</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <tr *ngFor="let address of addressService.addressList">
+                        <p >{{address.RecipientName}}({{address.ContactNum}}) - {{address.StreetAddress}}({{address.StandNo}}) - {{address.Suburb}},{{address.City}}({{address.PostalCode}})</p>
+                         </tr>
+                      <!--Start Form -->
+                     
+                        <table class="table">
+                          <thead>
+                          <tr>
+                              <th>Item Description</th>
+                              <th>Cart Quantity</th>
+                              <th>Unit Price</th>
+                             
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let cart of details">
+                             
+                              <td>{{cart.ProdName}}</td>
+                              <td>{{cart.CartQuantity}} </td>
+                              <td>R {{cart.Price}}</td>
+                              
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="card-body ">             
+                            <td><strong>Total R {{totalP}}</strong></td>
+                            </div>
+                  
+                        <div class="modal-footer" >
+                          <button id="btnDeliver" *ngIf="!Status(order)" data-dismiss="modal" (click)="UpdateStatus(order)" class="btn btn-link">Deliver</button>
+                           <button (click)="Print()" class="btn btn-secondary">Print</button>
+                          <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         
+
+                        </div>
+                    
+                                       
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+               <!--End Form -->
+              
+               
+               </td>
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    </tr>
+
+ 

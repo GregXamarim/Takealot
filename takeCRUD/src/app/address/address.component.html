@@ -1,0 +1,98 @@
+<app-login-nav></app-login-nav>
+
+<div class="checkOutList">
+    <div class="alert alert-success">
+        <strong>Address</strong> 
+      </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-white" data-toggle="modal" (onShowModal)="modalInstance.show()"  data-target="#exampleModalCenter">
+    <i class="fas fa-plus"></i> Add Address
+</button>
+
+<!-- Modal -->
+<div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Address</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!--Start Form -->
+        <form class="addAddress-form" #addAddress="ngForm" (ngSubmit)="onSubmit(addAddress)">
+          <input type="hidden" name="AddressID" #AddressID="ngModel" [(ngModel)] ="addr">
+          <input type="hidden" name="AddressID" #AddressID="ngModel" [(ngModel)] ="addressService.selectedAddress.AddressID" >
+          <input type="hidden" name="custID" #custID="ngModel" [(ngModel)] ="addressService.selectedAddress.custID">
+        
+        <div class="form-group">
+        
+          <div class="form-group col-md-10">
+             <label>Recipient Name:</label>
+            <input class="form-control" name="RecipientName" #RecipientName="ngModel"[(ngModel)]="addressService.selectedAddress.RecipientName " placeholder="Recipient Name" required>
+            <div class="validation-error" *ngIf="RecipientName.invalid && RecipientName.touched">This Field Is Required</div>
+          </div>
+        
+        
+         </div>
+        <div class="form-group col-md-10">
+           <label>Contact Details:</label>
+           <input  class="form-control" name="ContactNum" #ContactNum="ngModel"[(ngModel)]="addressService.selectedAddress.ContactNum" placeholder="Contact Number" required>
+           <div class="validation-error" *ngIf="ContactNum.invalid && ContactNum.touched">This Field Is Required</div>
+        
+           <label>Address Type:</label>
+           <input class="form-control" name="AddressType" #AddressType="ngModel"[(ngModel)]="addressService.selectedAddress.AddressType" placeholder="Residential/Business Address" required> 
+           <div class="validation-error" *ngIf="AddressType.invalid && AddressType.touched">This Field Is Required</div>
+        
+        
+        
+         
+            <label>Stand Number:</label>
+           <input class="form-control" name="StandNo" #StandNo="ngModel"[(ngModel)]="addressService.selectedAddress.StandNo" placeholder="Stand Number" required> 
+           <div class="validation-error" *ngIf="StandNo.invalid && StandNo.touched">This Field Is Required</div>
+
+
+           <label>Street Name:</label>
+           <input class="form-control" name="StreetAddress" #StreetAddress="ngModel"[(ngModel)]="addressService.selectedAddress.StreetAddress" placeholder="Street Address" required> 
+           <div class="validation-error" *ngIf="StreetAddress.invalid && StreetAddress.touched">This Field Is Required</div>
+
+           <label>Suburb:</label>
+           <input class="form-control" name="Suburb" #Suburb="ngModel"[(ngModel)]="addressService.selectedAddress.Suburb" placeholder="Suburb" required> 
+           <div class="validation-error" *ngIf="Suburb.invalid && Suburb.touched">This Field Is Required</div>
+        
+           <label>City/Town:</label>
+           <input class="form-control" name="City" #City="ngModel"[(ngModel)]="addressService.selectedAddress.City" placeholder="City/Town" required> 
+           <div class="validation-error" *ngIf="City.invalid && City.touched">This Field Is Required</div>
+         
+           <label>Postal Code:</label>
+           <input class="form-control" name="PostalCode" #PostalCode="ngModel"[(ngModel)]="addressService.selectedAddress.PostalCode" placeholder="Postal Code" required> 
+           <div class="validation-error" *ngIf="PostalCode.invalid && PostalCode.touched">This Field Is Required</div>
+        
+        
+        </div>
+    
+          <div class="modal-footer" >
+            <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled] = "!addAddress.valid" type="submit" class="btn btn-primary">Save</button>
+         
+          </div>
+      
+       
+        
+        <!--End Form -->
+      </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+ 
+
+ 
+
+
+
+</div>

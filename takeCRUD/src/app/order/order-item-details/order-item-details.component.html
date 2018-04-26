@@ -1,0 +1,51 @@
+<app-login-nav></app-login-nav>
+
+<div class="checkOutList">
+
+   
+<!--Radio group-->
+<div class="alert alert-success">
+    <strong>Confirm Payment</strong> 
+  </div>
+  <strong> <p>Delivery Address</p></strong>
+<p >{{recipientName}}({{contactNum}}) - {{streetAddress}}({{standNo}}) - {{suburb}},{{city}}({{postalCode}})</p>
+<strong><p>Payment Type</p></strong>
+<p >{{paymentType}}</p>
+<strong><p>Delivery Date</p></strong>
+<p >{{deliveryDate}}</p>
+<table class="table">
+  <thead>
+  <tr>
+      <th>Item Description</th>
+      <th>Cart Quantity</th>
+      <th>Unit Price</th>
+     
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let cart of orderItemInfo">
+      <td>{{cart.ProdName}}</td>
+      <td>{{cart.CartQuantity}} </td>
+      <td>R {{cart.Price}}</td>
+      
+    </tr>
+  </tbody>
+</table>
+
+  <div class="card-body ">             
+    <td><strong>Total R {{totalP}}</strong></td>
+    <td>
+      <div class="col">
+        <td><button class="btn btn-success" id="btnConfirm" routerLink="/home">Finish Shopping</button></td>
+        
+       </div>
+      
+    
+    </td>   
+   
+  </div>
+  
+
+</div>
+
+              

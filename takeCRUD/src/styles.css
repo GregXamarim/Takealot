@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+form.cust-form{
+    background-color:white;
+    border-radius: 4px;
+    padding: 10px;
+    float: center;
+}
+div.validation-error{
+    color: red;
+    text-align: center;
+}
+button.hover,a.btn:hover{
+    cursor: pointer;
+}
+header {
+    width: 100%;
+    height: 57px;
+    background-color: grey;
+}
+
+.logo img {
+    width: 15%;
+    height: 9%;
+    position: absolute;
+    padding: 3px;
+    float: left;
+    margin-left: 8%;
+    margin-top: 2px;
+}
+.card-img-top{
+   
+    width: 40%;
+    height: 20%;
+    display: block;
+   
+    
+   
+}
+.img-fluid{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+   
+}
+
+.navList {
+    width: auto;
+    float: right;
+    margin-top: 0px;
+    margin-right: 15%;
+}
+.AdminList{
+    width: auto;
+    float: center;
+    padding: 100px;
+    margin-left: 0%;
+}
+.productList{
+    width: auto;
+    float: center;
+    padding: 50px;
+    margin-left: 10%;
+}
+.driverList{
+    width: auto;
+    float: center;
+    padding: 10px;
+    margin-left: 0%;
+}
+.checkOutList{
+    width: auto;
+    float: center;
+    padding: 10px;
+    margin-left: 6%;
+}
+
+
+a {
+    color: black;
+}
+
+a:hover{
+    color: #85CCF2;
+    transition: 0.5s;
+}
+.loginInter{
+    margin-left: 30%;
+    padding: 30px;
+    
+}
+.homeInter{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+   
+    width: 50%;
+    height: 0%;
+}
+
+

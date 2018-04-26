@@ -1,0 +1,45 @@
+<app-login-nav></app-login-nav>
+
+<div class="checkOutList">
+
+   
+<!--Radio group-->
+<div class="alert alert-success">
+    <strong>Confirm Payment</strong> 
+  </div>
+<form class="form-group">
+
+  <div class="radio">
+    <label><input type="radio" id="todayDate" name="DeliveryDate"  [value] ="tDate.todayDate"> Same Day Delivery: {{orderDate.todayDate}}</label>
+  </div>
+  <div class="radio">
+    <label><input type="radio" id="after3"  name="DeliveryDate"> After 3 Working Days: {{orderDate.after3}}</label>
+  </div>
+  <div class="radio ">
+    <label><input type="radio" id="after5" name="DeliveryDate" [value] ="orderDate.after5"> After 5 Working Days: {{orderDate.after5}}</label>
+  </div>
+
+
+  <div class="card-body ">             
+    <td><strong>Total R {{totalP}}</strong></td>
+    <td>
+      <div class="col">
+        <button class="btn btn-success" id="btnConfirm" (click)="onSubmit()">Confirm</button>
+        <button disabled id="btnContinue" class="btn btn-success" (click)="onContinue()">Continue</button>
+       </div>
+
+    </td>
+     
+     
+       
+       
+    
+     
+   
+  </div>
+</form>
+  
+
+</div>
+
+              

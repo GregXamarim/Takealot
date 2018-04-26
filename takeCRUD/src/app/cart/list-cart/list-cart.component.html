@@ -1,0 +1,62 @@
+ <app-login-nav></app-login-nav>
+
+<div class="AdminList">
+  <h2> <strong>Shopping Cart Information</strong> </h2>
+<div  class="col-md-10">
+<table class="table">
+  <thead>
+  <tr>
+      <th>Item Description</th>
+      <th>Cart Quantity</th>
+      <th>Unit Price</th>
+     
+     
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let cart of cartDetails">
+      <td>{{cart.ProdName}}</td>
+      <td> <input class="col-md-4" id="cQuantity" name="CartQuantity" #CartQuantity="ngModel" [(ngModel)]="cart.CartQuantity"></td>
+      <td>R {{cart.Price}}</td>
+      <td><div *ngIf="!avail" class="alert alert-danger">
+        Avail Stock is {{cart.Quantity}}
+       </div></td>
+      
+
+     
+      
+      <td>
+          <a class="btn text-danger" (click)="onDelete(cart.CartID)">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+           
+           
+            
+        </td>
+        <td> <button class="btn btn-secondary"  (click)="editCart(cart)">Add Quantity To Cart</button></td>
+       
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<div class="card-body ">
+              
+  <td><strong>Card Summary</strong></td>
+    <div class="col">
+      <td>Total Quantity: {{totalQuantity}}</td>
+    </div>
+    <div class="col">
+        <td>Total Price: {{totalP}}</td>
+      </div>
+    <td>
+      <div class="col">
+          <td><button class="btn btn-secondary" routerLink="/checkout">Proceed to Checkout</button></td>
+      </div>
+    
+  </td>
+</div>
+
+</div>

@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+
+<div>
+  <h2 class="bg-white text-black">Customer Register</h2>
+</div>
+
+
+<form class="cust-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
+  
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+       <label>First Name:</label>
+      <input class="form-control" name="FirstName" #FirstName="ngModel"[(ngModel)]="customerService.selectedCustomer.FirstName" placeholder="First Name" required>
+      <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">This Field Is Required</div>
+    </div>
+ 
+    <div class="form-group col-md-4">
+       <label>Last Name:</label>
+       <input class="form-control" name="LastName" #LastName="ngModel"[(ngModel)]="customerService.selectedCustomer.LastName " placeholder="Last Name" required>
+       <div class="validation-error" *ngIf="LastName.invalid && LastName.touched">This Field Is Required</div>
+ 
+     </div>
+ 
+   </div>
+  <div class="form-group col-md-4">
+     <label>Email:</label>
+     <input type="email" class="form-control" name="Email" #Email="ngModel"[(ngModel)]="customerService.selectedCustomer.Email" placeholder="Email" required>
+     <div class="validation-error" *ngIf="Email.invalid && Email.touched">Invalid Email</div>
+ 
+     <label>Password:</label>
+     <input type="password" class="form-control" name="Password" #Password="ngModel"[(ngModel)]="customerService.selectedCustomer.Password" placeholder="Password" required minlength="4"> 
+     <div class="validation-error" *ngIf="Password.invalid && Password.touched">This Field Is Required And The Password Must Be More Than 4 Characters</div>
+ 
+     <label>Gender:</label>
+     <input class="form-control" name="Gender" #Gender="ngModel"[(ngModel)]="customerService.selectedCustomer.Gender" placeholder="Gender" required>
+     <div class="validation-error" *ngIf="Gender.invalid && Gender.touched">This Field Is Required</div>
+ 
+     <label>Birthday:</label>
+     <input class="form-control" name="Birthday" #Birthday="ngModel"[(ngModel)]="customerService.selectedCustomer.Birthday" placeholder="Birthday" required>
+     <div class="validation-error" *ngIf="Birthday.invalid && Birthday.touched">This Field Is Required</div>
+ 
+  </div>
+ 
+  <div class="form-group col-md-4">
+  <button [disabled] = "!customerForm.valid" type="submit" class="btn btn-lg btn-block btn-info"><i class="fas fa-user-plus"></i> Register Now</button>
+  </div>
+
+
+ </form>
+ 
+
+

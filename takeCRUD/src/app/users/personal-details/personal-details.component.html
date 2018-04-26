@@ -1,0 +1,59 @@
+<div *ngIf="userClaims">
+  <app-login-nav></app-login-nav>
+<div style="text-align:center">
+  <h2 class="bg-white text-black">Update Details</h2>
+</div>
+
+
+<form class="update-form" #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm)">
+  <input type="hidden" name="custID" #custID="ngModel" [(ngModel)] ="userClaims.custID" >
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+       <label>First Name:</label>
+       <input class="form-control" name="FirstName" #FirstName="ngModel" [(ngModel)]="userClaims.FirstName ">
+    </div>
+ 
+    <div class="form-group col-md-4">
+       <label>Last Name:</label>
+       <input class="form-control" name="LastName" #LastName="ngModel" [(ngModel)] ="userClaims.LastName ">
+       
+     </div>
+ 
+   </div>
+  <div class="form-group col-md-4">
+     <label>Email:</label>
+     <input type="email" class="form-control" name="Email" #Email="ngModel" [(ngModel)] ="userClaims.Email">
+
+     <label>Password:</label>
+     <input class="form-control" name="Password" #Password="ngModel"  [(ngModel)] ="userClaims.Password">
+    
+     
+ 
+     <label>Gender:</label>
+     <input class="form-control" name="Gender" #Gender="ngModel"   [(ngModel)] ="userClaims.Gender">
+    
+ 
+     <label>Birthday:</label>
+     <input class="form-control" name="Birthday" #Birthday="ngModel"  [(ngModel)] ="userClaims.Birthday">
+    
+ 
+  </div>
+ 
+  <div class="form-group col-md-4">
+  <button type ="submit" class="btn btn-lg btn-block btn-info">Update Now</button>
+  </div>
+
+
+ </form>
+ 
+</div>
+
+<div *ngIf="!userClaims">
+    <app-nav></app-nav>
+  <div style="text-align:center">
+    <h2 class="bg-white text-black">Please Login</h2>
+  </div>
+  
+
+</div>

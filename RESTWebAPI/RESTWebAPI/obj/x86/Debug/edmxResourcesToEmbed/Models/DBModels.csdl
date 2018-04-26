@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="takealotDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="custID" />
+    </Key>
+    <Property Name="custID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carts" Relationship="takealotDBModel.FK_Cart_customer" FromRole="customer" ToRole="Cart" />
+    <NavigationProperty Name="Addresses" Relationship="takealotDBModel.FK_Address_customer" FromRole="customer" ToRole="Address" />
+    <NavigationProperty Name="Payments" Relationship="takealotDBModel.FK_Payment_customer" FromRole="customer" ToRole="Payment" />
+    <NavigationProperty Name="Orders" Relationship="takealotDBModel.FK_Order_customer" FromRole="customer" ToRole="Order" />
+    <NavigationProperty Name="OrderItems" Relationship="takealotDBModel.FK_OrderItem_customer" FromRole="customer" ToRole="OrderItem" />
+  </EntityType>
+  <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="customers" EntityType="takealotDBModel.customer" />
+    <EntitySet Name="Admins" EntityType="takealotDBModel.Admin" />
+    <EntitySet Name="Drivers" EntityType="takealotDBModel.Driver" />
+    <EntitySet Name="Products" EntityType="takealotDBModel.Product" />
+    <EntitySet Name="Suppliers" EntityType="takealotDBModel.Supplier" />
+    <EntitySet Name="Carts" EntityType="takealotDBModel.Cart" />
+    <AssociationSet Name="FK_Cart_customer" Association="takealotDBModel.FK_Cart_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Product" Association="takealotDBModel.FK_Cart_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <EntitySet Name="Addresses" EntityType="takealotDBModel.Address" />
+    <AssociationSet Name="FK_Address_customer" Association="takealotDBModel.FK_Address_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <EntitySet Name="Payments" EntityType="takealotDBModel.Payment" />
+    <AssociationSet Name="FK_Payment_customer" Association="takealotDBModel.FK_Payment_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <EntitySet Name="EFTs" EntityType="takealotDBModel.EFT" />
+    <AssociationSet Name="FK_EFT_Payment" Association="takealotDBModel.FK_EFT_Payment">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="EFT" EntitySet="EFTs" />
+    </AssociationSet>
+    <EntitySet Name="Credits" EntityType="takealotDBModel.Credit" />
+    <AssociationSet Name="FK_Credit_Payment" Association="takealotDBModel.FK_Credit_Payment">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="Credit" EntitySet="Credits" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="takealotDBModel.Order" />
+    <AssociationSet Name="FK_Order_customer" Association="takealotDBModel.FK_Order_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="OrderItems" EntityType="takealotDBModel.OrderItem" />
+    <AssociationSet Name="FK_OrderItem_customer" Association="takealotDBModel.FK_OrderItem_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Order" Association="takealotDBModel.FK_OrderItem_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Product" Association="takealotDBModel.FK_OrderItem_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ProdName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="ProdImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carts" Relationship="takealotDBModel.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
+    <NavigationProperty Name="OrderItems" Relationship="takealotDBModel.FK_OrderItem_Product" FromRole="Product" ToRole="OrderItem" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="Int32" Nullable="false" />
+    <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="custID" Type="Int32" Nullable="false" />
+    <Property Name="CartQuantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="takealotDBModel.FK_Cart_customer" FromRole="Cart" ToRole="customer" />
+    <NavigationProperty Name="Product" Relationship="takealotDBModel.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Cart_customer">
+    <End Type="takealotDBModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="takealotDBModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="custID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="custID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Product">
+    <End Type="takealotDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="takealotDBModel.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custID" Type="Int32" Nullable="false" />
+    <Property Name="RecipientName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StandNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StreetAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Suburb" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="customer" Relationship="takealotDBModel.FK_Address_customer" FromRole="Address" ToRole="customer" />
+  </EntityType>
+  <Association Name="FK_Address_customer">
+    <End Type="takealotDBModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="takealotDBModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="custID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="custID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="customer" Relationship="takealotDBModel.FK_Payment_customer" FromRole="Payment" ToRole="customer" />
+    <NavigationProperty Name="EFTs" Relationship="takealotDBModel.FK_EFT_Payment" FromRole="Payment" ToRole="EFT" />
+    <NavigationProperty Name="Credits" Relationship="takealotDBModel.FK_Credit_Payment" FromRole="Payment" ToRole="Credit" />
+  </EntityType>
+  <Association Name="FK_Payment_customer">
+    <End Type="takealotDBModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="takealotDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="custID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="custID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EFT">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentID" Type="Int32" Nullable="false" />
+    <Property Name="AccountHolder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Bank" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BranchCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Payment" Relationship="takealotDBModel.FK_EFT_Payment" FromRole="EFT" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_EFT_Payment">
+    <End Type="takealotDBModel.Payment" Role="Payment" Multiplicity="1" />
+    <End Type="takealotDBModel.EFT" Role="EFT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="PaymentID" />
+      </Principal>
+      <Dependent Role="EFT">
+        <PropertyRef Name="PaymentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Credit">
+    <Key>
+      <PropertyRef Name="CardID" />
+    </Key>
+    <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentID" Type="Int32" Nullable="false" />
+    <Property Name="CardDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NameOnCard" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Payment" Relationship="takealotDBModel.FK_Credit_Payment" FromRole="Credit" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_Credit_Payment">
+    <End Type="takealotDBModel.Payment" Role="Payment" Multiplicity="1" />
+    <End Type="takealotDBModel.Credit" Role="Credit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="PaymentID" />
+      </Principal>
+      <Dependent Role="Credit">
+        <PropertyRef Name="PaymentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="customer" Relationship="takealotDBModel.FK_Order_customer" FromRole="Order" ToRole="customer" />
+    <NavigationProperty Name="OrderItems" Relationship="takealotDBModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+  </EntityType>
+  <Association Name="FK_Order_customer">
+    <End Type="takealotDBModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="takealotDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="custID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="custID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="OrderItemID" />
+    </Key>
+    <Property Name="OrderItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="custID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="takealotDBModel.FK_OrderItem_customer" FromRole="OrderItem" ToRole="customer" />
+    <NavigationProperty Name="Order" Relationship="takealotDBModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="takealotDBModel.FK_OrderItem_Product" FromRole="OrderItem" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_OrderItem_customer">
+    <End Type="takealotDBModel.customer" Role="customer" Multiplicity="1" />
+    <End Type="takealotDBModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="custID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="custID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Order">
+    <End Type="takealotDBModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="takealotDBModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Product">
+    <End Type="takealotDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="takealotDBModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

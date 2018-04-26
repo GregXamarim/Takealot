@@ -1,0 +1,27 @@
+
+<table class="table table-sm-hover"  >
+   
+  </table>
+ 
+  <tr *ngFor="let product of productService.productList">
+   
+      <div class="row">
+    <div class="col-md-3 .ml-md-auto " >
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top " src="assets/img/{{product.ProdImage}}">
+            <div class="card-body ">
+              
+                <td> {{product.ProdName}}</td>
+                  <div class="col">
+                      <td><strong>R {{product.Price}} </strong></td>
+                  </div> 
+                  <td>
+                  <button class="btn btn-secondary"  (click)="addCart(product)">Add To Cart</button>
+                </td>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+  
+ </tr> 

@@ -1,0 +1,31 @@
+<app-login-nav></app-login-nav>
+<div class="AdminList col-md-10">
+    <div style="text-align:center">
+        <h2 class=" bg-white text-black"><strong>Customer Invoice</strong></h2>
+      </div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Item Description</th>
+        <th>Cart Quantity</th>
+        <th>Unit Price</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cart of details">
+       
+        <td>{{cart.ProdName}}</td>
+        <td>{{cart.CartQuantity}} </td>
+        <td>R {{cart.Price}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <div class="card-body ">             
+      <td><strong>Total R {{totalP}}</strong></td>
+      </div>
+      <button (click)="Print()" class="btn btn-success col-md-10">Print</button>
+
+
+    </div>      

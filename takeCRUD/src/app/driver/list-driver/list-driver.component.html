@@ -1,0 +1,18 @@
+<table class="table table-sm table hover">
+  <tr *ngFor="let driver of driverService.driverList">
+  <td>{{driver.FirstName}} - {{driver.LastName}}</td>
+  <td>{{driver.Email}}</td>
+  <td>
+    <a class="btn" (click)="showEdit(driver)">
+        <i class="fas fa-edit"></i>
+    </a>
+    <a class="btn text-danger" (click)="onDelete(driver.DriverID)">
+        <i class="fas fa-trash-alt"></i>
+      </a>
+  </td>
+  
+  </tr>
+  
+  
+  
+  </table>

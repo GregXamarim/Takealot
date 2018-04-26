@@ -1,0 +1,45 @@
+<app-login-nav></app-login-nav>
+
+<div class="AdminList">
+    <div>
+        <h2 class=" bg-white text-black"><strong>EFT Payment</strong></h2>
+      </div>
+       <!--Start Form -->
+  <form class="addEFT-form" #addEFT="ngForm" (ngSubmit)="onSubmit(addEFT)">
+      <input type="hidden" name="AccountID" #AccountID="ngModel" [(ngModel)] ="eftService.selectedeft.AccountID" >
+      <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)] ="eftService.selectedeft.PaymentID">
+      
+    <div class="form-group">
+    
+      <div class="form-group col-md-6">
+         <label>Account Holder*</label>
+        <input class="form-control" name="AccountHolder" #AccountHolder="ngModel"[(ngModel)]="eftService.selectedeft.AccountHolder " placeholder="Account Holder" required>
+        <div class="validation-error" *ngIf="AccountHolder.invalid && AccountHolder.touched">This Field Is Required</div>
+      </div>
+    
+    
+     </div>
+    <div class="form-group col-md-6">
+       <label>Account Number*</label>
+       <input  class="form-control" name="AccountNumber" #AccountNumber="ngModel"[(ngModel)]="eftService.selectedeft.AccountNumber" placeholder="Account Number" required>
+       <div class="validation-error" *ngIf="AccountNumber.invalid && AccountNumber.touched">This Field Is Required</div>
+    
+       <label>Bank*</label>
+       <input class="form-control" name="Bank" #Bank="ngModel"[(ngModel)]="eftService.selectedeft.Bank" placeholder="Bank" required> 
+       <div class="validation-error" *ngIf="Bank.invalid && Bank.touched">This Field Is Required</div>
+     
+        <label>Branch Code*</label>
+       <input class="form-control" name="BranchCode" #BranchCode="ngModel"[(ngModel)]="eftService.selectedeft.BranchCode" placeholder="Branch Code" required> 
+       <div class="validation-error" *ngIf="BranchCode.invalid && BranchCode.touched">This Field Is Required</div>
+  
+  
+    </div>
+      
+        <button [disabled] = "!addEFT.valid" type="submit" class="btn btn-success">Secure Payment</button>
+        <img src="https://static.takealot.com/images/pay-opt-eftall.png">
+        <button [disabled] = "!addEFT.valid" class="btn btn-success" routerLink="/order">Procced</button>
+    <!--End Form -->
+  </form>
+</div>
+  
+ 

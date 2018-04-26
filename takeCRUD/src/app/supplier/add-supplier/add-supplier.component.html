@@ -1,0 +1,97 @@
+<header >
+    <div class="logo">
+      <a>
+        <img src="assets/img/logo.png">
+      </a>
+    </div>
+  
+  <div class="navList">
+      
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+  
+            <li class="nav-item active">
+              <a class="nav-link" *ngIf="adminClaims"><strong>Hi {{adminClaims.FirstName}}</strong></a>
+            </li>
+  
+            <li class="nav-item active">
+              <a class="nav-link btn" (click)="Logout()"><strong><i class="fas fa-sign-out-alt"></i> Logout</strong></a>
+            </li>
+    
+          
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <strong> Manage Accounts</strong>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 
+                  <a class="dropdown-item" routerLink="/add-driver">Manage Drivers</a>
+                  <a class="dropdown-item" routerLink="/add-supplier">Manage Suppliers</a>
+                  <a class="dropdown-item"  routerLink="/product">Manage Products</a>
+                  <a class="dropdown-item"  routerLink="/adminOrderList">View Orders</a>
+                </div>
+              </li>
+  
+          </ul>
+       
+        </div>
+      
+      </nav>
+    </div>
+  </header>
+
+
+
+
+<div class="AdminList">
+    <div style="text-align:center">
+      <h2 class=" bg-white text-black"><strong>Manage Suppliers</strong></h2>
+    </div>
+    
+    <div class="row bg-secondary" >
+      <div class="col-md-4">
+      
+          
+<form class="addSupplier-form" #addSupplier="ngForm" (ngSubmit)="onSubmit(addSupplier)">
+    <input type="hidden" name="SupplierID" #SupplierID="ngModel" [(ngModel)] ="supplierService.selectedSupplier.SupplierID" >
+  
+  <div class="form-group">
+  
+    <div class="form-group col-md-10">
+       <label>Supplier Name:</label>
+      <input class="form-control" name="SupplierName" #SupplierName="ngModel"[(ngModel)]="supplierService.selectedSupplier.SupplierName" placeholder="Supplier Name" required>
+      <div class="validation-error" *ngIf="SupplierName.invalid && SupplierName.touched">This Field Is Required</div>
+    </div>
+  
+  
+   </div>
+  <div class="form-group col-md-10">
+     <label>Email:</label>
+     <input type="email" class="form-control" name="Email" #Email="ngModel"[(ngModel)]="supplierService.selectedSupplier.Email" placeholder="Email" required>
+     <div class="validation-error" *ngIf="Email.invalid && Email.touched">Invalid Email</div>
+  
+     <label>Password:</label>
+     <input type="password" class="form-control" name="Password" #Password="ngModel"[(ngModel)]="supplierService.selectedSupplier.Password" placeholder="Password" required minlength="4"> 
+     <div class="validation-error" *ngIf="Password.invalid && Password.touched">This Field Is Required And The Password Must Be More Than 4 Characters</div>
+  
+  </div>
+  <div class="form-group col-md-10">
+      <button [disabled] = "!addSupplier.valid" type="submit" class="btn btn-lg btn-block btn-info"><i class="fas fa-save"></i> Add Supplier</button>
+      </div>
+</form>  
+  
+
+
+      </div>
+      <div class="col-md-6">
+          <label><strong>Suppliers:</strong></label>
+        <app-list-supplier></app-list-supplier>
+      </div>
+    </div>
+    </div>

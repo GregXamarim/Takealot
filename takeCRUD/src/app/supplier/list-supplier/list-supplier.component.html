@@ -1,0 +1,17 @@
+<table class="table table-sm table hover">
+  <tr *ngFor="let supplier of supplierService.SupplierList">
+  <td>{{supplier.SupplierName}} - {{supplier.Email}}</td>
+  <td>
+    <a class="btn" (click)="showEdit(supplier)">
+        <i class="fas fa-edit"></i>
+    </a>
+    <a class="btn text-danger" (click)="onDelete(supplier.SupplierID)">
+        <i class="fas fa-trash-alt"></i>
+      </a>
+  </td>
+  
+  </tr>
+  
+  
+  
+  </table>
